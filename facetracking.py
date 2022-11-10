@@ -1,6 +1,7 @@
 from __future__ import print_function
 import cv2 as cv
 import argparse
+import time
 
 
 def detectAndDisplay(frame):
@@ -59,6 +60,10 @@ while True:
     if frame is None:
         print('--(!) No captured frame -- Break!')
         break
+    tic = time.perf_counter()
     detectAndDisplay(frame)
-    if cv.waitKey(10) == 27:
+    toc = time.perf_counter()
+    print(f"{toc - tic:0.8f} seconds")
+
+    if cv.waitKey(20) == 27:
         break
